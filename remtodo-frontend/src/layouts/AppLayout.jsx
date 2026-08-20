@@ -13,7 +13,6 @@ const NAV_ITEMS = [
   { path: '/coding', label: 'Coding Lab', icon: '◇' },
   { path: '/goals', label: 'Goals', icon: '⭐' },
   { path: '/projects', label: 'Projects', icon: '📁' },
-  { path: '/calendar', label: 'Calendar', icon: '📅' },
   { path: '/progress', label: 'Progress', icon: '📊' },
   { path: '/settings', label: 'Settings', icon: '⚙' },
 ];
