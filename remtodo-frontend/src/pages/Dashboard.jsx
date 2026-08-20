@@ -6,88 +6,6 @@ import CozyDeskRoom from '../components/CozyDeskRoom';
 import { storageService } from '../services/storageService';
 import './Dashboard.css';
 
-function MiniCalendar({ tasks = [], reminders = [] }) {
-  const [currentDate, setCurrentDate] = useState(new Date());
-  const [selectedDay, setSelectedDay] = useState(new Date().getDate());
-
-  const year = currentDate.getFullYear();
-  const month = currentDate.getMonth();
-  const todayStr = new Date().toISOString().split('T')[0];
-
-  const firstDay = new Date(year, month, 1).getDay();
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-  const getEventsForDay = (d) => {
-    const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-    const dayTasks = tasks.filter(t => t.dueDate === dateStr);
-    const dayReminders = reminders.filter(r => r.dueDate === dateStr);
-    return [...dayTasks.map(t => ({ ...t, type: 'task' })), ...dayReminders.map(r => ({ ...r, type: 'reminder' }))];
-  };
-
-  const selectedEvents = selectedDay ? getEventsForDay(selectedDay) : [];
-
-  const cells = [];
-  for (let i = 0; i < firstDay; i++) cells.push(null);
-  for (let d = 1; d <= daysInMonth; d++) cells.push(d);
-
-  const prevMonth = () => setCurrentDate(new Date(year, month - 1, 1));
-  const nextMonth = () => setCurrentDate(new Date(year, month + 1, 1));
-  const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  const DAYS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-
-  return (
-    <div className="pixel-card dash-calendar">
-      <div className="pixel-card-header" style={{ justifyContent: 'space-between' }}>
-        <span>📅 CALENDAR</span>
-        <div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
-          <button className="mini-cal-btn" onClick={prevMonth}>◀</button>
-          <span style={{ fontSize: 10, fontFamily: 'var(--font-pixel)' }}>{MONTHS[month]} {year}</span>
-          <button className="mini-cal-btn" onClick={nextMonth}>▶</button>
-        </div>
-      </div>
-      <div className="pixel-card-body" style={{ padding: 12 }}>
-        <div className="mini-cal-grid">
-          {DAYS.map((d, i) => <div key={i} className="mini-cal-header">{d}</div>)}
-          {cells.map((day, i) => {
-            if (!day) return <div key={`e${i}`} className="mini-cal-cell empty"></div>;
-            const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-            const dayEvents = getEventsForDay(day);
-            const isToday = dateStr === todayStr;
-            const isSelected = selectedDay === day;
-            return (
-              <div
-                key={day}
-                className={`mini-cal-cell ${isToday ? 'today' : ''} ${isSelected ? 'selected' : ''} ${dayEvents.length > 0 ? 'has-events' : ''}`}
-                onClick={() => setSelectedDay(day)}
-              >
-                <span>{day}</span>
-                {dayEvents.length > 0 && <span className="mini-cal-dot"></span>}
-              </div>
-            );
-          })}
-        </div>
-        {selectedDay && (
-          <div className="mini-cal-day-detail">
-            <div className="mini-cal-detail-header">
-              📅 {MONTHS[month]} {selectedDay} ({selectedEvents.length} deadlines)
-            </div>
-            {selectedEvents.length > 0 ? (
-              selectedEvents.slice(0, 3).map((e, idx) => (
-                <div key={e.id || idx} className="mini-cal-detail-item">
-                  <span className="mini-cal-detail-icon">{e.type === 'task' ? '✓' : '🔔'}</span>
-                  <span className={`mini-cal-detail-title ${e.completed ? 'task-text-done' : ''}`}>{e.title}</span>
-                </div>
-              ))
-            ) : (
-              <div className="mini-cal-detail-empty">No deadlines for this day</div>
-            )}
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
 export default function Dashboard() {
   const { user } = useAuth();
   const [tasks, setTasks] = useState([]);
@@ -174,9 +92,6 @@ export default function Dashboard() {
             </p>
           </div>
         </div>
-
-        {/* Mini Calendar Widget */}
-        <MiniCalendar tasks={tasks} reminders={reminders} />
 
         {/* Today's Tasks */}
         <div className="pixel-card dash-tasks">

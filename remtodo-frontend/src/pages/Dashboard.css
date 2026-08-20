@@ -259,126 +259,12 @@
   color: var(--brown-muted);
 }
 
-/* Mini Calendar Widget */
-.dash-calendar {
-  grid-column: 2;
-}
-
-.mini-cal-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 10px;
-  color: var(--brown-text);
-  padding: 0 4px;
-}
-
-.mini-cal-btn:hover {
-  color: var(--mauve);
-}
-
-.mini-cal-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 2px;
-  text-align: center;
-}
-
-.mini-cal-header {
-  font-family: var(--font-pixel);
-  font-size: 8px;
-  color: var(--brown-muted);
-  padding: 2px 0;
-}
-
-.mini-cal-cell {
-  aspect-ratio: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  font-weight: 500;
-  cursor: pointer;
-  border: 1px solid transparent;
-  border-radius: 3px;
-  position: relative;
-  transition: all 0.1s;
-}
-
-.mini-cal-cell:hover:not(.empty) {
-  background: var(--pink-soft);
-  border-color: var(--pink-primary);
-}
-
-.mini-cal-cell.today {
-  background: var(--pink-light);
-  border: 1.5px solid var(--pink-primary);
-  font-weight: bold;
-}
-
-.mini-cal-cell.selected {
-  background: var(--mauve);
-  color: var(--white);
-}
-
-.mini-cal-cell.empty {
-  cursor: default;
-}
-
-.mini-cal-dot {
-  width: 4px;
-  height: 4px;
-  background: var(--pink-primary);
-  border-radius: 50%;
-  position: absolute;
-  bottom: 2px;
-}
-
-.mini-cal-day-detail {
-  margin-top: 10px;
-  padding-top: 8px;
-  border-top: 1px solid var(--border-light);
-}
-
-.mini-cal-detail-header {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--brown-text);
-  margin-bottom: 6px;
-}
-
-.mini-cal-detail-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  padding: 3px 0;
-  color: var(--brown-text);
-}
-
-.mini-cal-detail-icon {
-  font-size: 10px;
-}
-
-.mini-cal-detail-title {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.mini-cal-detail-empty {
-  font-size: 11px;
-  color: var(--brown-muted);
-  font-style: italic;
-}
-
 @media (max-width: 768px) {
   .dashboard-grid {
     grid-template-columns: 1fr;
     grid-template-areas: none !important;
   }
-  .dash-space, .dash-buddy, .dash-calendar, .dash-tasks, .dash-activity, .dash-reminders {
+  .dash-space, .dash-buddy, .dash-tasks, .dash-activity, .dash-reminders {
     grid-column: 1;
     grid-area: auto;
   }
