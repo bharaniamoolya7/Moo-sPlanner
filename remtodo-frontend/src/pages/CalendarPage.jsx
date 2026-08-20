@@ -103,15 +103,10 @@ export default function CalendarPage() {
                   >
                     <span className="cal-cell-num">{day}</span>
                     {dayEvents.length > 0 && (
-                      <div className="cal-cell-badges">
-                        {dayEvents.slice(0, 2).map((e, j) => (
-                          <div key={j} className={`cal-event-pill ${e.type}`}>
-                            {e.title}
-                          </div>
+                      <div className="cal-cell-dots">
+                        {dayEvents.slice(0, 4).map((e, j) => (
+                          <span key={j} className={`cal-dot ${e.type}`}></span>
                         ))}
-                        {dayEvents.length > 2 && (
-                          <div className="cal-more-count">+{dayEvents.length - 2} more</div>
-                        )}
                       </div>
                     )}
                   </div>

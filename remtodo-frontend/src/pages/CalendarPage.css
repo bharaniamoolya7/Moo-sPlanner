@@ -1,7 +1,7 @@
 /* Calendar Page */
 .calendar-page {
   width: 100%;
-  max-width: 900px;
+  max-width: 650px;
   margin: 0 auto;
 }
 
@@ -15,19 +15,20 @@
   font-family: var(--font-pixel);
   font-size: 9px;
   text-align: center;
-  padding: 8px 4px;
+  padding: 6px 2px;
   color: var(--brown-muted);
   letter-spacing: 0.5px;
 }
 
 .cal-cell {
-  aspect-ratio: 1;
+  min-height: 48px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   border: 1px solid transparent;
+  border-radius: var(--radius-sm);
   transition: all 0.15s;
   position: relative;
   padding: 4px;
@@ -56,7 +57,7 @@
 
 .cal-cell-num {
   font-family: var(--font-retro);
-  font-size: 18px;
+  font-size: 16px;
   color: var(--brown-text);
 }
 
@@ -64,38 +65,24 @@
   cursor: default;
 }
 
-.cal-cell-badges {
+.cal-cell-dots {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
-  width: 100%;
-  margin-top: 4px;
-  overflow: hidden;
+  gap: 3px;
+  margin-top: 3px;
+  justify-content: center;
 }
 
-.cal-event-pill {
-  font-size: 9px;
-  padding: 1px 4px;
-  border-radius: 3px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
+.cal-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
   border: 1px solid var(--border-dark);
-  font-weight: 500;
 }
 
-.cal-event-pill.task { background: var(--pink-light); color: var(--brown-text); }
-.cal-event-pill.reminder { background: var(--blue-soft); color: var(--brown-text); }
-.cal-event-pill.project { background: var(--yellow-soft); color: var(--brown-text); }
-.cal-event-pill.goal { background: var(--green-soft); color: var(--brown-text); }
-
-.cal-more-count {
-  font-size: 8px;
-  font-family: var(--font-pixel);
-  color: var(--brown-muted);
-  text-align: center;
-}
+.cal-dot.task { background: var(--pink-primary); }
+.cal-dot.reminder { background: var(--blue-soft); }
+.cal-dot.project { background: var(--yellow-soft); }
+.cal-dot.goal { background: var(--green-soft); }
 
 .cal-nav-btn {
   background: none;
