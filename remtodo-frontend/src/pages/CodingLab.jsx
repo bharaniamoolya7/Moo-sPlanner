@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
+import { storageService } from '../services/storageService';
 import api from '../services/api';
 
 const DIFFICULTIES = ['Easy', 'Medium', 'Hard'];
@@ -33,10 +34,12 @@ export default function CodingLab() {
   const [langFilter, setLangFilter] = useState('all');
   const [form, setForm] = useState({ title: '', description: '', difficulty: 'Easy', topic: 'Arrays', language: 'Java', code: '', solved: false, notes: '' });
 
-  useEffect(() => { loadProblems(); }, []);
+  useEffect(() => { loadProblems(); }, [user?.id]);
 
   const loadProblems = async () => {
-    try { const res = await api.get(`/api/coding-problems/user/${user?.id}`); setProblems(res.data || []); } catch {}
+    setLoading(true);
+    const data = await storageService.getItems(user?.id, 'coding_problems', `/api/coding-problems/user/${user?.id}`);
+    setProblems(data);
     setLoading(false);
   };
 
@@ -54,30 +57,27 @@ export default function CodingLab() {
     e.preventDefault();
     if (!form.title.trim()) { showToast('Need a title!', 'error'); return; }
     const data = { ...form, userId: user?.id };
-    try {
-      if (editingItem) { const res = await api.put(`/api/coding-problems/${editingItem.id}`, data); setProblems(p => p.map(x => x.id === editingItem.id ? res.data : x)); }
-      else { const res = await api.post('/api/coding-problems', data); setProblems(p => [res.data, ...p]); }
-      showToast('Problem saved ♡');
-    } catch {
-      const local = { ...data, id: editingItem?.id || Date.now() };
-      if (editingItem) { setProblems(p => p.map(x => x.id === editingItem.id ? local : x)); }
-      else { setProblems(p => [local, ...p]); }
-      showToast('Problem saved ♡');
+    const saved = await storageService.saveItem(user?.id, 'coding_problems', data, '/api/coding-problems', editingItem?.id);
+    if (editingItem) {
+      setProblems(p => p.map(x => String(x.id) === String(editingItem.id) ? saved : x));
+    } else {
+      setProblems(p => [saved, ...p]);
     }
+    showToast('Problem saved ♡');
     setShowModal(false);
   };
 
   const toggleSolved = async (problem) => {
     const updated = { ...problem, solved: !problem.solved };
-    setProblems(p => p.map(x => x.id === problem.id ? updated : x));
-    try { await api.put(`/api/coding-problems/${problem.id}`, updated); } catch {}
+    const saved = await storageService.saveItem(user?.id, 'coding_problems', updated, '/api/coding-problems', problem.id);
+    setProblems(p => p.map(x => String(x.id) === String(problem.id) ? saved : x));
     showToast(updated.solved ? 'Problem solved! 🎉' : 'Marked unsolved');
   };
 
   const deleteProblem = async (id) => {
     if (window.confirm('Are you sure you want to delete this problem?')) {
-      setProblems(p => p.filter(x => x.id !== id));
-      try { await api.delete(`/api/coding-problems/${id}`); } catch {}
+      await storageService.deleteItem(user?.id, 'coding_problems', id, '/api/coding-problems');
+      setProblems(p => p.filter(x => String(x.id) !== String(id)));
       showToast('Problem deleted');
     }
   };
