@@ -1,0 +1,186 @@
+/* Welcome Page - Matching screenshot 1 */
+.welcome-page {
+  min-height: 100vh;
+  background-color: var(--bg-cream);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+}
+
+/* Background decorations */
+.welcome-bg-decor {
+  position: absolute;
+  opacity: 0.25;
+  pointer-events: none;
+}
+.welcome-bg-decor.top-left { top: -30px; left: -30px; }
+.welcome-bg-decor.top-right { top: -30px; right: -30px; }
+.welcome-bg-decor.bottom-left { bottom: 40px; left: -30px; }
+.welcome-bg-decor.bottom-right { bottom: 40px; right: -30px; }
+
+.iso-room-mini {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(135deg, var(--pink-light) 25%, var(--bg-cream-light) 25%, var(--bg-cream-light) 50%, var(--pink-light) 50%, var(--pink-light) 75%, var(--bg-cream-light) 75%);
+  background-size: 20px 20px;
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  opacity: 0.5;
+}
+
+/* Floating stars */
+.welcome-star {
+  position: absolute;
+  color: var(--brown-muted);
+  font-size: 16px;
+  animation: twinkle 2s infinite alternate;
+  pointer-events: none;
+}
+.welcome-star.s1 { top: 25%; left: 20%; animation-delay: 0s; font-size: 14px; }
+.welcome-star.s2 { top: 40%; right: 25%; animation-delay: 0.5s; font-size: 18px; }
+.welcome-star.s3 { bottom: 30%; left: 30%; animation-delay: 1s; font-size: 12px; }
+.welcome-star.s4 { bottom: 35%; right: 20%; animation-delay: 1.5s; color: var(--pink-primary); font-size: 16px; }
+
+/* Main card */
+.welcome-card {
+  background: var(--white);
+  border: 2px solid var(--border-dark);
+  box-shadow: 4px 4px 0px rgba(74, 55, 40, 0.12);
+  max-width: 480px;
+  width: 100%;
+  z-index: 10;
+  position: relative;
+}
+
+.welcome-card-inner {
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Bell icon */
+.welcome-icon-wrapper {
+  position: relative;
+  margin-bottom: 28px;
+}
+
+.welcome-bell-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--pink-light);
+  border: 3px solid var(--pink-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome-bell {
+  font-size: 32px;
+  filter: grayscale(0.3);
+}
+
+.welcome-heart-badge {
+  position: absolute;
+  top: -4px;
+  right: -8px;
+  font-size: 18px;
+  animation: heartbeat 1.5s infinite alternate;
+}
+
+/* Title */
+.welcome-title {
+  font-family: var(--font-retro);
+  font-size: 48px;
+  color: var(--brown-text);
+  margin-bottom: 8px;
+  letter-spacing: 3px;
+}
+
+.welcome-tagline {
+  font-size: 15px;
+  color: var(--brown-light);
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+/* Start button */
+.welcome-start-btn {
+  width: 100%;
+  max-width: 340px;
+  font-size: 14px;
+  padding: 16px 32px;
+  border-radius: var(--radius-pixel);
+  margin-bottom: 20px;
+}
+
+/* Login link */
+.welcome-login-text {
+  font-size: 13px;
+  color: var(--brown-muted);
+}
+
+.welcome-login-link {
+  color: var(--mauve);
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.welcome-login-link:hover {
+  color: var(--mauve-dark);
+}
+
+/* Footer */
+.welcome-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border-light);
+  background: rgba(245, 240, 220, 0.8);
+}
+
+.welcome-footer-brand {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--brown-muted);
+}
+
+.welcome-footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.welcome-footer-links a {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--brown-text);
+  text-decoration: none;
+}
+
+.welcome-footer-links a:hover {
+  color: var(--mauve);
+}
+
+@media (max-width: 768px) {
+  .welcome-card-inner {
+    padding: 32px 24px;
+  }
+  .welcome-title {
+    font-size: 36px;
+  }
+  .iso-room-mini {
+    width: 120px;
+    height: 120px;
+  }
+}

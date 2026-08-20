@@ -1,0 +1,25 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run Frontend (Vite)",
+      "type": "shell",
+      "command": "npm run dev",
+      "options": {
+        "cwd": "${workspaceFolder}/remtodo-frontend"
+      },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Run Backend (Spring Boot)",
+      "type": "shell",
+      "command": "powershell -Command \"$maven = @(Get-ChildItem -Path '$env:USERPROFILE\\.vscode' -Recurse -Filter 'mvn.cmd' -ErrorAction SilentlyContinue)[0].FullName; & $maven spring-boot:run\"",
+      "options": {
+        "cwd": "${workspaceFolder}/remtodo-backend"
+      },
+      "isBackground": true,
+      "problemMatcher": []
+    }
+  ]
+}

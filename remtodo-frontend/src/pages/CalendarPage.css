@@ -1,0 +1,118 @@
+/* Calendar Page */
+.calendar-page {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.cal-day-header {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  text-align: center;
+  padding: 8px 4px;
+  color: var(--brown-muted);
+  letter-spacing: 0.5px;
+}
+
+.cal-cell {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.15s;
+  position: relative;
+  padding: 4px;
+}
+
+.cal-cell:hover:not(.empty) {
+  background: var(--pink-soft);
+  border-color: var(--pink-primary);
+}
+
+.cal-cell.today {
+  background: var(--pink-light);
+  border: 2px solid var(--pink-primary);
+  font-weight: bold;
+}
+
+.cal-cell.selected {
+  background: var(--mauve);
+  color: var(--white);
+  border-color: var(--mauve-dark);
+}
+
+.cal-cell.selected .cal-cell-num {
+  color: var(--white);
+}
+
+.cal-cell-num {
+  font-family: var(--font-retro);
+  font-size: 18px;
+  color: var(--brown-text);
+}
+
+.cal-cell.empty {
+  cursor: default;
+}
+
+.cal-cell-dots {
+  display: flex;
+  gap: 2px;
+  margin-top: 2px;
+}
+
+.cal-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+.cal-dot.pink { background: var(--pink-primary); }
+.cal-dot.blue { background: var(--blue-soft); }
+
+.cal-nav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--brown-text);
+  padding: 2px 8px;
+}
+
+.cal-nav-btn:hover {
+  color: var(--mauve);
+}
+
+.cal-event-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.cal-event-item:last-child {
+  border-bottom: none;
+}
+
+.cal-event-type {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 14px;
+}
+
+.cal-event-type.task { background: var(--pink-light); }
+.cal-event-type.reminder { background: var(--blue-soft); }

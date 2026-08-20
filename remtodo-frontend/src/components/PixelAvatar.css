@@ -1,0 +1,10 @@
+.pixel-avatar {
+  display: inline-block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.pixel-avatar svg {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}

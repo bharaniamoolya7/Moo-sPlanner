@@ -1,0 +1,320 @@
+/* Learning Hub */
+.learning-page {
+  width: 100%;
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.timer-section {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.timer-display {
+  background: var(--white);
+  border: 2px solid var(--border-dark);
+  padding: 12px 24px;
+}
+
+.timer-digits {
+  font-family: var(--font-pixel);
+  font-size: 28px;
+  color: var(--mauve);
+  letter-spacing: 2px;
+}
+
+.timer-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.timer-durations {
+  display: flex;
+  gap: 4px;
+}
+
+.subjects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.subject-card {
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.subject-card:hover {
+  box-shadow: var(--shadow-pixel);
+  transform: translateY(-2px);
+}
+
+.subject-card.active {
+  border-color: #e07a5f;
+  background-color: #fff9f6;
+  box-shadow: var(--shadow-pixel);
+}
+
+.topics-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.topic-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--bg-cream-light);
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  flex-wrap: wrap;
+}
+
+.topic-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 180px;
+}
+
+.topic-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.topic-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.topic-status-select {
+  padding: 4px 8px;
+  font-size: 11px;
+  border: 1px solid var(--border-light);
+  background: var(--white);
+  cursor: pointer;
+  font-family: var(--font-body);
+  border-radius: 4px;
+}
+
+/* YouTube Buttons & Badges */
+.btn-youtube {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #ff0000;
+  color: #ffffff !important;
+  border: 1px solid #cc0000;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.1s, background-color 0.15s;
+  text-decoration: none;
+}
+
+.btn-youtube:hover {
+  background-color: #d90000;
+  transform: scale(1.03);
+}
+
+.btn-youtube-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #fff0f0;
+  color: #cc0000 !important;
+  border: 1px solid #ffb3b3;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-youtube-outline:hover {
+  background-color: #ffe6e6;
+  border-color: #ff8080;
+}
+
+/* YouTube Video Grid & Cards */
+.video-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.video-card {
+  background: var(--white);
+  border: 1.5px solid var(--border-dark);
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+}
+
+.video-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-pixel);
+}
+
+.video-thumbnail-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  background: #1a1a1a;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.video-thumbnail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.2s;
+}
+
+.video-card:hover .video-thumbnail {
+  opacity: 0.9;
+}
+
+.play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 0, 0, 0.85);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.video-thumbnail-wrapper:hover .play-overlay {
+  transform: translate(-50%, -50%) scale(1.15);
+  background: rgba(255, 0, 0, 1);
+}
+
+.video-card-body {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.video-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dark, #2b2b2b);
+  line-height: 1.3;
+  margin-bottom: 2px;
+}
+
+.video-topic-tag {
+  font-size: 10px;
+  color: #888;
+  background: #f0f0f0;
+  padding: 2px 6px;
+  border-radius: 3px;
+  display: inline-block;
+  align-self: flex-start;
+}
+
+.video-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border-light);
+}
+
+/* Video Modal */
+.video-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 16px;
+  backdrop-filter: blur(3px);
+}
+
+.video-modal-container {
+  background: var(--bg-cream, #fffdf8);
+  border: 2px solid var(--border-dark);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  width: 100%;
+  max-width: 850px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.video-modal-header {
+  background: var(--pink-soft, #f4acb7);
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--border-dark);
+  font-family: var(--font-pixel);
+  font-size: 13px;
+}
+
+.video-iframe-wrapper {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 */
+  width: 100%;
+  background: #000;
+}
+
+.video-iframe-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.youtube-input-hint {
+  font-size: 11px;
+  color: #777;
+  margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+  .timer-section { flex-direction: column; align-items: flex-start; }
+  .subjects-grid { grid-template-columns: 1fr; }
+  .topic-row { flex-direction: column; align-items: flex-start; }
+  .topic-actions { width: 100%; justify-content: space-between; }
+}
+

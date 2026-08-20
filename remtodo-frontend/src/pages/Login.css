@@ -1,0 +1,37 @@
+.login-page {
+  min-height: 100vh;
+  background: var(--bg-cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-window {
+  max-width: 440px;
+  width: 100%;
+}
+
+.login-content {
+  padding: 36px;
+  text-align: center;
+}
+
+.login-icon-area {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.login-content .signup-heading {
+  text-align: center;
+}
+
+.login-content .signup-subheading {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.login-content .input-label {
+  text-align: left;
+}
